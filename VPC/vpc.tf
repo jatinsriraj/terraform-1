@@ -3,6 +3,15 @@ resource "aws_vpc" "main" { #this name belongs to only terraform reference
     cidr_block       = "10.0.0.0/16"
     instance_tenancy = "default"
     tags = {
-        Name = "automated-vpc" #this name belongs to AWS
+        Name = "jatin1-vpc" #this name belongs to AWS
     }
+}
+
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "jatin-public"
+  }
 }
